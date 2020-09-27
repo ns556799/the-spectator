@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import Lottie from "react-lottie";
 import * as animationData from "./assets/loader.json";
 import { ReactComponent as Star } from "./assets/star.svg";
+import { ReactComponent as Tick } from "./assets/tick.svg";
+
 import { SelectedArticlesContext } from "../contexts/SelectedArticleContext";
 
 const ArticleItemContainer = styled.div`
@@ -68,6 +70,20 @@ const ArticleItemButton = styled.button`
 
     transition: box-shadow 0.5s ease-in;
   }
+  ${(props) => {
+    if (props.disabled) {
+      return `
+        color: ${props.theme.lightNero};
+        box-shadow: none;
+        background-color: ${props.theme.lightestNero};
+        border: 2px solid ${props.theme.borderNero};
+        cursor: not-allowed;
+        &:hover {
+          box-shadow: none;
+        }
+      `;
+    }
+  }}
 `;
 
 const ArticleItemButtonContent = styled.span`
@@ -125,9 +141,13 @@ const ArticleItem = ({ author, title, urlToImage, id, uuid }) => {
   const [selectedArticles, setSelectedArticles] = useContext(
     SelectedArticlesContext
   );
-  const [stopStatus, setStopStatus] = useState(false);
 
-  useEffect(() => {}, []);
+  const [stopStatus, setStopStatus] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    selectedArticles.includes(uuid) ? setDisabled(true) : setDisabled(false);
+  }, [selectedArticles, uuid]);
 
   const defaultOptions = {
     loop: true,
@@ -144,9 +164,22 @@ const ArticleItem = ({ author, title, urlToImage, id, uuid }) => {
 
   function handleArticleSelection(e) {
     const uuid = e.target.dataset.uuid;
-
-    setSelectedArticles((prevArr) => [...prevArr, uuid]);
+    if (!selectedArticles.includes(uuid)) {
+      setSelectedArticles((prevArr) => [...prevArr, uuid]);
+    }
   }
+
+  const ButtonText = () => {
+    return disabled ? (
+      <React.Fragment>
+        Added <Tick />
+      </React.Fragment>
+    ) : (
+      <React.Fragment>
+        Add <Star />
+      </React.Fragment>
+    );
+  };
 
   return (
     <ArticleItemContainer id={id}>
@@ -154,10 +187,11 @@ const ArticleItem = ({ author, title, urlToImage, id, uuid }) => {
       <ArticleItemHeadline>{title}</ArticleItemHeadline>
       <ArticleItemButton
         data-uuid={uuid}
+        disabled={disabled}
         onClick={(e) => handleArticleSelection(e)}
       >
         <ArticleItemButtonContent>
-          Add <Star />
+          <ButtonText />
         </ArticleItemButtonContent>
       </ArticleItemButton>
       <ArticleItemImageWrapper>
