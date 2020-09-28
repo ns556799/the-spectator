@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Articles } from "./ArticleComponent";
 import { Pagination } from "./includes";
 import { BookmarkBar } from "./BookmarkBarComponent";
-import { Header } from "./includes";
+import { Header, Footer } from "./includes";
 import { ArticlesContext } from "../contexts/ArticlesContext";
 import { ArticleWrapper } from "./ArticleComponent/ArticleComponentStyle";
 
@@ -40,6 +40,7 @@ const App = () => {
         totalArticles={articles.length}
         paginate={paginate}
       />
+      <Footer />
     </AppContainer>
   );
 };
