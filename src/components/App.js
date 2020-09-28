@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import Articles from "./Articles";
-import Pagination from "./Pagination";
-import BookmarkBar from "./BookmarkBar";
-import Header from "./includes/Header";
+import { Articles } from "./ArticleComponent";
+import { Pagination } from "./includes";
+import { BookmarkBar } from "./BookmarkBarComponent";
+import { Header } from "./includes";
 import { ArticlesContext } from "../contexts/ArticlesContext";
 
 const AppContainer = styled.div``;
