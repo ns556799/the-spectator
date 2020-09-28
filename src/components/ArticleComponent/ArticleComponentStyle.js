@@ -1,20 +1,60 @@
 import styled from "styled-components";
+import { device } from "../../config/mq";
+
+// App
+export const ArticleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media ${device.tablet} {
+    flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 240px;
+    max-width: 1220px;
+    position: relative;
+    padding-left: 16px;
+    padding-right: 16px;
+    zoom: 1;
+  }
+`;
 
 // Articles
 export const ArticlesContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 80%;
-  flex-basis: 80%;s
-  padding: 32px 0;
+  max-width: 100%;
+  flex-basis: 100%;
+  padding: 16px;
+  order: 2;
+
+  @media ${device.tablet} {
+    max-width: 80%;
+    flex-basis: 80%;
+    padding: 32px 0;
+    order: 1;
+  }
 `;
 
 // ArticleItem
 export const ArticleItemContainer = styled.div`
-  max-width: calc(100% / 3 - 32px);
-  flex-basis: calc(100% / 3 - 32px);
-  margin: 0 16px;
+  max-width: 100%;
+  flex-basis: 100%;
+
+  @media ${device.tablet} {
+    max-width: calc(100% / 2 - 32px);
+    flex-basis: calc(100% / 2 - 32px);
+    margin: 0 16px;
+  }
+
+  @media ${device.laptop} {
+    max-width: calc(100% / 3 - 32px);
+    flex-basis: calc(100% / 3 - 32px);
+    margin: 0 16px;
+  }
 `;
 export const ArticleItemAuthor = styled.div`
   color: ${(props) => props.theme.venetianRed};
@@ -31,7 +71,10 @@ export const ArticleItemHeadline = styled.div`
   line-height: 1.08;
   color: ${(props) => props.theme.nero};
   margin-bottom: 28px;
-  min-height: 160px;
+
+  @media ${device.tablet} {
+    min-height: 160px;
+  }
 `;
 export const ArticleItemButton = styled.button`
   margin-bottom: 37px;
@@ -40,16 +83,21 @@ export const ArticleItemButton = styled.button`
   background-color: ${(props) => props.theme.lighterVenetianRed};
   position: relative;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
   font-family: ${(props) => props.theme.josefinFont};
   border-radius: 20px;
-  padding: 6px 50px 6px 30px;
+  padding: 10px 50px 6px 30px;
   border: 2px solid ${(props) => props.theme.venetianRed};
   line-height: 1;
   cursor: pointer;
   box-shadow: inset 0.3rem 0.2rem 0 #fff,
     0.375rem 0.375rem 0 ${(props) => props.theme.lighterVenetianRed};
   transition: box-shadow 0.5s ease-in;
+
+  @media ${device.tablet} {
+    font-size: 16px;
+    padding: 6px 50px 6px 30px;
+  }
 
   &:active,
   &:focus {
@@ -70,9 +118,9 @@ export const ArticleItemButton = styled.button`
   &:hover {
     box-shadow: inset 0.3rem 0.2rem 0 #fff,
       0.375rem 0.375rem 0 ${(props) => props.theme.lightVenetianRed};
-
     transition: box-shadow 0.5s ease-in;
   }
+
   ${(props) => {
     if (props.disabled) {
       return `
@@ -107,7 +155,6 @@ export const ArticleItemButtonContent = styled.span`
 export const ArticleItemImageWrapper = styled.div`
   width: 100%;
   position: relative;
-  background-color: red;
   margin-bottom: 16px;
 
   &:after {

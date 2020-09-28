@@ -5,23 +5,9 @@ import { Pagination } from "./includes";
 import { BookmarkBar } from "./BookmarkBarComponent";
 import { Header } from "./includes";
 import { ArticlesContext } from "../contexts/ArticlesContext";
+import { ArticleWrapper } from "./ArticleComponent/ArticleComponentStyle";
 
 const AppContainer = styled.div``;
-
-const ArticleWrapper = styled.div`
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  min-width: 240px;
-  max-width: 1220px;
-  position: relative;
-  max-width: 1220px;
-  padding-left: 10px;
-  padding-right: 10px;
-  zoom: 1;
-  display: flex;
-  flex-direction: row;
-`;
 
 const App = () => {
   const [
@@ -47,12 +33,13 @@ const App = () => {
       <ArticleWrapper>
         <Articles articles={currentArticles} loading={loading} />
         <BookmarkBar />
-        {/* <Pagination
+      </ArticleWrapper>
+      <Pagination
         articlesPerPage={articlesPerPage}
+        currentPage={currentPage}
         totalArticles={articles.length}
         paginate={paginate}
-      /> */}
-      </ArticleWrapper>
+      />
     </AppContainer>
   );
 };
