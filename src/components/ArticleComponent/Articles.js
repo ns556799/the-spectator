@@ -1,16 +1,7 @@
 import React from "react";
-import ArticleItem from "./ArticleItem";
-import styled from "styled-components";
+import { ArticleItem } from "./";
 import PropTypes from "prop-types";
-
-const ArticlesContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: 75%;
-  flex-basis: 75%;
-  padding: 32px 0;
-`;
+import { ArticlesContainer } from "./ArticleComponentStyle";
 
 const Articles = ({ articles, loading }) => {
   if (loading) {
