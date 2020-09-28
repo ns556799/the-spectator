@@ -40,13 +40,14 @@ const ArticleItem = ({ author, title, urlToImage, id, uuid }) => {
     },
   };
 
-  // cb when img has loaded
+  // cb when img has loaded - stop loading animation
   function handleImageLoaded() {
     setStopStatus(true);
   }
 
   function handleArticleSelection(e) {
     const uuid = e.target.dataset.uuid;
+    // If UUID isn't selected already, add to arr
     if (!selectedArticles.includes(uuid)) {
       setSelectedArticles((prevArr) => [...prevArr, uuid]);
     }

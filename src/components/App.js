@@ -20,6 +20,9 @@ const App = () => {
 
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+
+  // Only show 9 articles per page
+
   const currentArticles = articles.slice(
     indexOfFirstArticle,
     indexOfLastArticle
