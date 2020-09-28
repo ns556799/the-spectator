@@ -16,7 +16,7 @@ export const ArticlesProvider = (props) => {
     const fetchArticles = async () => {
       setLoading(true);
       const res = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=gb&pageSize=100&apiKey=${API_KEY}`
+        `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=gb&pageSize=100&apiKey=${API_KEY}`
       );
 
       let results = res.data.articles;
