@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import { data } from "../results";
 
 const API_KEY = process.env.REACT_APP_API;
 
@@ -15,11 +16,13 @@ export const ArticlesProvider = (props) => {
   useEffect(() => {
     const fetchArticles = async () => {
       setLoading(true);
-      const res = await axios.get(
-        `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=gb&pageSize=100&apiKey=${API_KEY}`
-      );
+      // const res = await axios.get(
+      //   `https://newsapi.org/v2/top-headlines?country=gb&pageSize=100&apiKey=c8735f91d97b4c03b04490be531d6e13`
+      // );
 
-      let results = res.data.articles;
+      // let results = res.data.articles;
+
+      const results = data;
 
       // API does not provide unique IDs to articles, UUID will provide this
       results.map((e) => {
