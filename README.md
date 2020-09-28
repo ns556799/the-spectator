@@ -10,4 +10,4 @@ Navigate to project directory via Terminal
 
 use `yarn start` to run project locally.
 
-Alternatively, the project can be viewed here: https://spectator-niv-suresh.herokuapp.com/
+Alternatively, the project can be viewed here: https://the-spectator.vercel.app/
