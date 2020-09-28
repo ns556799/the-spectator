@@ -5,8 +5,8 @@ export const ArticlesContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 75%;
-  flex-basis: 75%;
+  max-width: 80%;
+  flex-basis: 80%;s
   padding: 32px 0;
 `;
 
