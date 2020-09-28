@@ -2,6 +2,8 @@ import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
+const API_KEY = process.env.REACT_APP_API;
+
 export const ArticlesContext = createContext();
 
 export const ArticlesProvider = (props) => {
@@ -14,7 +16,7 @@ export const ArticlesProvider = (props) => {
     const fetchArticles = async () => {
       setLoading(true);
       const res = await axios.get(
-        "https://newsapi.org/v2/top-headlines?country=gb&pageSize=100&apiKey=c8735f91d97b4c03b04490be531d6e13"
+        `https://newsapi.org/v2/top-headlines?country=gb&pageSize=100&apiKey=${API_KEY}`
       );
 
       let results = res.data.articles;
