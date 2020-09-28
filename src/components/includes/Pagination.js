@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Pagination = ({ articlesPerPage, totalArticles, paginate }) => {
   const pageNumber = [];
@@ -22,3 +23,5 @@ const Pagination = ({ articlesPerPage, totalArticles, paginate }) => {
 };
 
 export default Pagination;
+
+Pagination.propTypes = {};
